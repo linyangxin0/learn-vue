@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  // 请求一
+
+  let isResult1=false
+  let isResult2=false
+  $ajax({
+    url:'',
+    success:function () {
+      handleResult()
+    }
+  })
+  // 请求二
+  $ajax({
+    url:'',
+    success:function () {
+      handleResult()
+    }
+  })
+
+  function handleResult() {
+    //让两者都为true
+    if(isResult1==true&&isResult2==true){
+
+    }
+  }
+</script>
+</body>
+</html>

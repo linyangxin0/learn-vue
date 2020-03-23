@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <cpn :cmovies="movies" :cmessage="message"></cpn>
+</div>
+
+
+<template id="cpn">
+  <div>
+    <p>{{cmovies}}</p>
+    <h2>{{cmessage}}</h2>
+  </div>
+</template>
+<script src="../js/vue.js"></script>
+<script>
+  //父传子：props
+  const cpn={
+    template:'#cpn',
+    // 数组形式
+    // props:['cmovies','cmessage']
+    //类型限制，对象形式
+    props:{
+      // comvies:Array,
+      // cmessage:String
+
+      // 提供一些默认值
+      cmessage:{
+        type:String,
+        default:'aaaaaaa',
+        required:true
+      },
+      //类型是对象或者数组时，必须是一个函数
+      cmovies:{
+        type:Array,
+        default(){
+          return{}
+        },
+        //数据验证
+        validator(value){
+          return['海尔兄弟','海贼王','海王'].indexOf(value)!==-1;
+        }
+      }
+    },
+  }
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: '你好',
+      movies: ['海尔兄弟','海贼王','海王','火影忍者']
+    },
+    components:{
+      cpn
+    }
+  })
+</script>
+
+</body>
+</html>

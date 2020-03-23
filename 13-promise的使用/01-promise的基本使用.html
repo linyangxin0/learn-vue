@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+  //使用settimeout
+  // setTimeout(()=>{
+  //
+  // },1000)
+
+  //resolve,reject本身就是函数
+  new Promise((resolve,reject)=>{
+    setTimeout(()=>{
+
+
+      // 如果有resolve时，会调用then
+      // 成功的时候调用resolve，来到then；失败的时候调用reject，来到catch
+      resolve('hello word')
+    },1000)
+  }).then((data)=>{
+    console.log(data);
+  }).catch((err)=>{
+
+  })
+
+
+  // 什么情况下用到promis
+  //一般情况是有异步操作时，使用promise对这个异步操作进封装
+
+</script>
+</body>
+</html>

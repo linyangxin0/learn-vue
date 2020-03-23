@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+  <button @click="btn1Click">1</button>
+  <button @click="btn2Click(123)">2</button>
+<!--  在方法定义时，需要参数也需要$event-->
+  <button @click="btn3Click(123,$event)">3</button>
+
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: '你好',
+      event:'aaaaa'
+    },
+    methods:{
+      btn1Click(){
+        console.log("btn1Click");
+      },
+      btn2Click(abc){
+        console.log('-----',abc);
+      },
+      btn3Click(abc,event){
+        console.log('-----',abc,event);
+      },
+    }
+  })
+</script>
+
+</body>
+</html>

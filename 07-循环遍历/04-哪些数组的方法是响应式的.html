@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+  <ul>
+    <li v-for="item in letters">{{item}}</li>
+  </ul>
+  <button @click="btnClick">添加</button>
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      letters:['A','B','C','D','E']
+    },
+    methods:{
+      btnClick(){
+        // 1、响应式
+        // this.letters.push('aaa');
+        // push()添加元素在数组中最后、pop()删除数组中的最后一个元素
+        // shift()删除数组中的第一个元素、unshift()在数组最前面添加元素
+        // splice()：删除(start,删除元素个数)不传个数全删除、插入(star,0,具体元素)、替换(star,替换元素个数,具,体,元,素)：可以不对等替换
+        // sort()排序
+        // reverse()反转
+
+
+        //2、通过索引改变数组中的元素是非响应式的
+
+        this.letters[0]='bbbb';
+      }
+    }
+  })
+</script>
+
+</body>
+</html>

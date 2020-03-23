@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+  <span v-if="isUse">
+    <label for="userTel">用户电话</label>
+    <input type="text" id="userTel" placeholder="用户电话" key="userTel">
+  </span >
+  <span v-else>
+    <label for="userName">用户邮箱</label>
+     <input type="text" id="userName" placeholder="用户邮箱" key="userName">
+  </span>
+  <button @click="isUse=!isUse" >切换</button>
+
+
+
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: '你好',
+      isUse:false
+    },
+    methods:{
+      btnClick(){
+        this.isUse=!this.isUse;
+      }
+    }
+  })
+</script>
+
+</body>
+</html>

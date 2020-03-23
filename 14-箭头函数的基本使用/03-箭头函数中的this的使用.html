@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  //什么时候使用箭头函数：把一个函数作为参数传入另一个函数
+
+  //问题：箭头函数中的this是如何查找的？
+  //结论：箭头函数中的this引用的是最近作用域中的this。向外层作用域中，一层一层查找，直到查找到this定义
+  const obj={
+    aaa(){
+      setTimeout(function () {
+        console.log(this); //this指的是window
+      },1000)
+      setTimeout(()=>{
+        console.log(this) //ogj对象
+      },1000)
+    }
+  }
+
+
+
+  const obj={
+    aaa(){
+      setTimeout(function () {
+
+        setTimeout(function () {
+          console.log(this)     window//
+        })
+
+        setTimeout(()=>{
+          console.log(this)  //window
+        })
+
+      },1000)
+
+      setTimeout(()=>{
+        setTimeout(function () {
+          console.log(this)  //window
+        })
+
+        setTimeout(()=>{
+          console.log(this)   //obj
+        })
+      },1000)
+    }
+  }
+
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+  Promise.all([
+      new Promise((resolve,rejext)=>{
+        $ajax({
+          url:'url1',
+          success:function (data) {
+            resolve(data)
+          }
+        })
+      }),
+      new Promise((resolve,rejext)=>{
+        $ajax({
+          url:'url2',
+          success:function (data) {
+            resolve(data)
+          }
+        })
+      }),
+  ]).then(results=>{
+    //results为上面的成功时返回的参数，类型为数组，同时成功才能调用该then
+    results[0]
+    results[1]
+  })
+
+</script>
+</body>
+</html>

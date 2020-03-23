@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+
+<style>
+  .active{
+    color: red;
+  }
+</style>
+<body>
+
+<div id="app">
+  <ul>
+    <li v-for="(m,index) in message" v-on:click="getIndex(index)" :class="getClasses(index)">{{index}}->{{m}}</li>
+  </ul>
+  <h2>{{click}}</h2>
+</div>
+
+<script src="../js/vue.js"></script>
+<script>
+
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: ['海王','海尔兄弟','水妹','火影忍者'],
+      click:0,
+      indexClass:[false,false,false,false]
+    },
+    methods: {
+      getIndex: function (index) {
+        this.click=index;
+      },
+      getClasses:function (index) {
+        for(var i=0;i<this.indexClass.length;i++)
+          this.indexClass[i]=false;
+
+        this.indexClass[this.click]=true;
+
+        return {active:this.indexClass[index]}
+      }
+    }
+  })
+</script>
+
+</body>
+</html>

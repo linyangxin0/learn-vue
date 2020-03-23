@@ -1,0 +1,1 @@
+export var num1=100;

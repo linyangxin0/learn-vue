@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+  //网络请求：aaa
+  //处理：aaa111
+  //仅一次异步操作
+  new Promise((resolve,reject)=>{
+    setTimeout(()=>{
+      resolve('aaa')
+    },1000)
+  }).then(res=>{
+    console.log(res,'第一层调用');
+    //链式调用
+    return new Promise(resolve => {
+      resolve(res+'111')
+    })
+  }).then(res=>{
+    console.log(res,'第二层调用')
+
+    return new Promise(resolve => {
+      resolve(res+'222')
+    })
+  }).then(res=>{
+    console.log(res,'第三层调用')
+  })
+
+
+
+  //第二种方式
+  //若想处理错误，将promise换为reject
+  //也可以手动throw出异常，然后在最后catch到异常
+  new Promise((resolve,reject)=>{
+    setTimeout(()=>{
+      resolve('aaa')
+    },1000)
+  }).then(res=>{
+    console.log(res,'第一层调用');
+    //链式调用
+    return Promise.resolve(res+'111')
+  }).then(res=>{
+    console.log(res,'第二层调用')
+
+    return Promise.resolve(res+'222')
+  }).then(res=>{
+    console.log(res,'第三层调用')
+  })
+
+  //最简便写法
+  new Promise((resolve,reject)=>{
+    setTimeout(()=>{
+      resolve('aaa')
+    },1000)
+  }).then(res=>{
+    console.log(res,'第一层调用');
+    //链式调用
+    return res+'111'
+  }).then(res=>{
+    console.log(res,'第二层调用')
+
+    return res+'222'
+  }).then(res=>{
+    console.log(res,'第三层调用')
+  })
+</script>
+
+</body>
+</html>
